@@ -13,6 +13,7 @@
             --accent-cyan: #38bdf8;
             --accent-orange: #f97316;
             --border-glow: #1e293b;
+            --card-bg: rgba(15, 23, 42, 0.6);
         }
 
         * {
@@ -30,14 +31,12 @@
             color: var(--text-light);
         }
 
-        /* Container que ocupa a tela toda */
         .presentation-wrapper {
             width: 100%;
             height: 100%;
             position: relative;
         }
 
-        /* Cada slide ocupa exatamente 100% da tela e fica sobreposto */
         .slide {
             position: absolute;
             top: 0;
@@ -45,7 +44,7 @@
             width: 100%;
             height: 100%;
             background-color: var(--slide-bg);
-            padding: 60px 100px;
+            padding: 50px 80px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -55,14 +54,12 @@
             z-index: 1;
         }
 
-        /* Slide ativo fica visível */
         .slide.active {
             opacity: 1;
             pointer-events: auto;
             z-index: 2;
         }
 
-        /* Linha decorativa superior estilo circuito */
         .slide::before {
             content: "";
             position: absolute;
@@ -73,24 +70,24 @@
             background: linear-gradient(90deg, var(--accent-cyan), var(--accent-orange));
         }
 
-        /* Estrutura Interna dos Slides */
         .slide-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid #1e293b;
-            padding-bottom: 20px;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .slide-title {
-            font-size: 2.8rem;
+            font-size: 2.4rem;
             font-weight: 800;
             letter-spacing: -0.02em;
             color: var(--text-light);
         }
 
         .slide-tag {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.15em;
@@ -101,33 +98,85 @@
             border: 1px solid rgba(56, 189, 248, 0.2);
         }
 
+        /* Layout de Duas Colunas para Integração de Imagens */
         .slide-body {
             flex-grow: 1;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            font-size: 1.6rem;
+            gap: 40px;
+            align-items: center;
+            font-size: 1.3rem;
             color: #e2e8f0;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             width: 100%;
+            overflow: hidden;
+        }
+
+        .content-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .image-column {
+            flex: 1;
+            height: 85%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(15, 23, 42, 0.4);
+            border: 2px dashed #2d3748;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .image-column:hover {
+            border-color: var(--accent-cyan);
+            background-color: rgba(15, 23, 42, 0.7);
+        }
+
+        .image-column img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            z-index: 2;
+        }
+
+        .image-placeholder-text {
+            position: absolute;
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            z-index: 1;
+        }
+
+        .image-placeholder-text i {
+            display: block;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--accent-cyan);
         }
 
         .slide-body p {
-            margin-bottom: 25px;
-            line-height: 1.6;
+            margin-bottom: 20px;
+            line-height: 1.5;
         }
 
         .slide-body ul {
             list-style: none;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .slide-body li {
             position: relative;
-            padding-left: 35px;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            line-height: 1.4;
         }
 
         .slide-body li::before {
@@ -135,30 +184,30 @@
             position: absolute;
             left: 0;
             color: var(--accent-orange);
-            font-size: 1.8rem;
-            top: -4px;
+            font-size: 1.5rem;
+            top: -2px;
         }
 
         .highlight-quote {
-            background-color: rgba(15, 23, 42, 0.6);
-            border-left: 6px solid var(--accent-orange);
-            padding: 25px;
-            border-radius: 0 16px 16px 0;
-            margin: 30px 0;
+            background-color: var(--card-bg);
+            border-left: 5px solid var(--accent-orange);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 15px 0;
             font-style: italic;
             color: var(--text-light);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 1.4rem;
+            margin: 15px 0;
+            font-size: 1.1rem;
         }
 
         th, td {
-            padding: 18px 24px;
+            padding: 14px 18px;
             text-align: left;
             border-bottom: 2px solid #1e293b;
         }
@@ -177,10 +226,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-muted);
             border-top: 2px solid #1e293b;
-            padding-top: 20px;
+            padding-top: 15px;
         }
 
         /* Estilo Exclusivo da Capa (Slide 1) */
@@ -192,7 +241,7 @@
         }
 
         .slide.cover h1 {
-            font-size: 4.8rem;
+            font-size: 4.2rem;
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 20px;
@@ -202,29 +251,29 @@
         }
 
         .slide.cover h2 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: var(--accent-cyan);
             font-weight: 500;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             max-width: 900px;
         }
 
         .slide.cover .meta {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--text-muted);
             border: 1px solid #1e293b;
-            padding: 15px 30px;
+            padding: 12px 28px;
             border-radius: 40px;
             background-color: rgba(17, 22, 37, 0.6);
         }
 
-        /* Controles de Navegação Fixos no Rodapé da Tela */
+        /* Controles de Navegação */
         .controls {
             position: fixed;
-            bottom: 25px;
+            bottom: 20px;
             right: 40px;
             display: flex;
-            gap: 15px;
+            gap: 12px;
             z-index: 10;
         }
 
@@ -232,10 +281,10 @@
             background-color: rgba(30, 41, 59, 0.8);
             border: 1px solid #334155;
             color: var(--text-light);
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             user-select: none;
             transition: all 0.2s ease;
@@ -250,26 +299,53 @@
 
         .slide-indicator {
             position: fixed;
-            bottom: 35px;
+            bottom: 30px;
             left: 40px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-muted);
             z-index: 10;
             font-weight: 600;
         }
 
-        /* Instruções de Fullscreen de ajuda rápida */
         .fullscreen-hint {
             position: fixed;
             top: 20px;
             right: 40px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             background: rgba(0,0,0,0.4);
             padding: 6px 12px;
             border-radius: 6px;
             z-index: 10;
             pointer-events: none;
+        }
+
+        .slide-6-image-container {
+            height: 120px; 
+            border: 2px dashed #2d3748; 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background-color: rgba(15, 23, 42, 0.4); 
+            color: var(--text-muted); 
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .slide-6-image-container:hover {
+            border-color: var(--accent-cyan);
+            background-color: rgba(15, 23, 42, 0.7);
+        }
+        .slide-6-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
         }
     </style>
 </head>
@@ -280,7 +356,6 @@
 
 <div class="presentation-wrapper">
 
-    <!-- SLIDE 1: CAPA -->
     <div class="slide cover active">
         <h1>A Aliança do Silício</h1>
         <h2>A Estratégia Trump, Apple e Intel para Desafiar o Monopólio da TSMC</h2>
@@ -289,20 +364,24 @@
         </div>
     </div>
 
-    <!-- SLIDE 2 -->
     <div class="slide">
         <div class="slide-header">
             <div class="slide-title">O Ponto Único de Falha</div>
             <div class="slide-tag">Cenário Global</div>
         </div>
         <div class="slide-body">
-            <p>Na arquitetura de sistemas, um "Single Point of Failure" pode derrubar toda a operação. No mercado de semicondutores, esse ponto é geográfico:</p>
-            <ul>
-                <li><strong>Gargalo em Taiwan:</strong> A TSMC domina mais de 90% da manufatura de chips de vanguarda (nós de 3nm e inferiores).</li>
-                <li><strong>O Risco Operacional:</strong> Gigantes como Apple, Nvidia e AMD são totalmente dependentes da estabilidade política e física de uma única região.</li>
-            </ul>
-            <div class="highlight-quote">
-                "Se a TSMC parar hoje por qualquer motivo geopolítico, o ecossistema tecnológico global entra em colapso imediato."
+            <div class="content-column">
+                <p>Na arquitetura de hardware e sistemas, um gargalo crítico pode comprometer toda a cadeia de suprimentos global:</p>
+                <ul>
+                    <li><strong>Dependência de Taiwan:</strong> A TSMC centraliza mais de 90% da manufatura de chips de vanguarda (≤ 3nm).</li>
+                    <li><strong>Risco Operacional:</strong> Gigantes como Apple, Nvidia e AMD dependem inteiramente da estabilidade de uma única região geopolítica.</li>
+                </ul>
+                <div class="highlight-quote">
+                    "A paralisação da TSMC geraria um colapso imediato no ecossistema de tecnologia global."
+                </div>
+            </div>
+            <div class="image-column">
+                <img src="https://engenhariasobmedida.com/wp-content/uploads/2024/06/wafer-de-silicio-1024x572.webp" alt="Wafer de Silício">
             </div>
         </div>
         <div class="slide-footer">
@@ -310,112 +389,143 @@
         </div>
     </div>
 
-    <!-- SLIDE 3 -->
     <div class="slide">
         <div class="slide-header">
-            <div class="slide-title">A Intervenção Estatal: Equity e Valuation</div>
+            <div class="slide-title">Intervenção Estatal e Valuation</div>
             <div class="slide-tag">Estratégia Econômica</div>
         </div>
         <div class="slide-body">
-            <p>O governo dos EUA mudou as regras tradicionais do jogo de subsídios, agindo diretamente como um fundo de Venture Capital soberano:</p>
-            <ul>
-                <li><strong>Participação Direta (Equity):</strong> O governo norte-americano assumiu uma fatia de 10% de participação direta nas operações da Intel.</li>
-                <li><strong>Explosão de Mercado:</strong> Impulsionado pelo anúncio e garantias governamentais, o valuation da Intel saltou de ~$100 bilhões para a casa dos $600 bilhões.</li>
-                <li><strong>Segurança Nacional:</strong> A Intel foi reclassificada de uma corporação privada em crise para "Infraestrutura Crítica do Estado".</li>
-            </ul>
+            <div class="content-column">
+                <p>Os EUA alteraram o modelo tradicional de subsídios, atuando diretamente no mercado corporativo estratégico:</p>
+                <ul>
+                    <li><strong>Participação Direta (Equity):</strong> O governo norte-americano assumiu uma fatia de 10% nas operações de fundição da Intel.</li>
+                    <li><strong>Explosão de Mercado:</strong> Com o suporte estatal, o valuation da Intel saltou de ~$100B para a casa dos $600B.</li>
+                    <li><strong>Infraestrutura Crítica:</strong> A Intel deixa de ser vista apenas como empresa privada e vira ativo de Segurança Nacional.</li>
+                </ul>
+            </div>
+            <div class="image-column">
+                <img src="https://oimparcial.com.br/app/uploads/2020/04/stonks-meme.webp" alt="Meme Stonks">
+            </div>
         </div>
         <div class="slide-footer">
             <span>A Aliança do Silício</span>
         </div>
     </div>
 
-    <!-- SLIDE 4 -->
     <div class="slide">
         <div class="slide-header">
-            <div class="slide-title">A Virada Tecnológica: O Nó Intel 18A-P</div>
+            <div class="slide-title">A Virada Tecnológica: Intel 18A-P</div>
             <div class="slide-tag">Engenharia de Hardware</div>
         </div>
         <div class="slide-body">
-            <p>Projetar arquiteturas de chips é inútil sem a capacidade física de imprimi-las no silício com eficiência. A Intel aposta tudo na sua nova litografia:</p>
-            <ul>
-                <li><strong>Inovação Estrutural:</strong> O processo 18A-P introduz o <em>PowerVia</em> (alimentação de energia pela face traseira do chip) e transistores RibbonFET.</li>
-                <li><strong>A Necessidade de Volume:</strong> Para viabilizar financeiramente as novas fábricas (Fabs), a Intel precisava desesperadamente de clientes externos que operassem em escala de massa.</li>
-            </ul>
+            <div class="content-column">
+                <p>Projetar arquiteturas complexas exige a capacidade física de imprimi-las no silício com alta eficiência comercial:</p>
+                <ul>
+                    <li><strong>Inovação Estrutural:</strong> O nó 18A-P introduz a tecnologia <em>PowerVia</em> (alimentação traseira) e transistores <em>RibbonFET</em>.</li>
+                    <li><strong>Demanda de Escala:</strong> Para viabilizar as novas mega-fábricas (Fabs), a Intel precisava atrair clientes âncora operando em massa.</li>
+                </ul>
+            </div>
+            <div class="image-column">
+                <img src="https://elchapuzasinformatico.com/wp-content/uploads/2023/05/Diseno-Intel-PowerVia-vs-diseno-tradicional-de-transistores.jpg.webp" alt="Intel PowerVia vs Tradicional">
+            </div>
         </div>
         <div class="slide-footer">
             <span>A Aliança do Silício</span>
         </div>
     </div>
 
-    <!-- SLIDE 5 -->
     <div class="slide">
         <div class="slide-header">
-            <div class="slide-title">A Estratégia de Homologação da Apple</div>
+            <div class="slide-title">Estratégia de Homologação da Apple</div>
             <div class="slide-tag">Migração e Riscos</div>
         </div>
         <div class="slide-body">
-            <p>A Apple não migra seu ecossistema principal sem testes rigorosos. O movimento em direção à Intel é estratégico e em fases:</p>
-            <ul>
-                <li><strong>Fase de Validação (2026):</strong> Desenvolvimento de chips de teste usando as ferramentas e o PDK da litografia 18A-P da Intel.</li>
-                <li><strong>Produção Comercial (2027):</strong> Início do rollout comercial vindo das novas plantas americanas (Arizona, Ohio e Oregon).</li>
-                <li><strong>O Escudo contra a Escassez:</strong> Com as linhas da TSMC sobrecarregadas por GPUs de Inteligência Artificial, a Intel se torna o porto seguro de fornecimento da Apple.</li>
-            </ul>
+            <div class="content-column">
+                <p>A migração do ecossistema de semicondutores da Apple ocorre de forma estratégica, mitigando riscos de produção:</p>
+                <ul>
+                    <li><strong>Fase de Validação (2026):</strong> Desenvolvimento e testes estruturais usando o PDK da litografia Intel 18A-P.</li>
+                    <li><strong>Produção Comercial (2027):</strong> Rollout comercial baseado nas novas plantas domésticas (Arizona, Ohio e Oregon).</li>
+                    <li><strong>Escudo Antiescassez:</strong> Com as linhas da TSMC ocupadas por chips de IA, as Fabs da Intel garantem a cadeia do iPhone/Mac.</li>
+                </ul>
+            </div>
+            <div class="image-column">
+                <div class="image-placeholder-text">
+                    <i>🛡️</i>
+                    <strong>[Espaço para Imagem/Linha do Tempo]</strong><br>
+                    Sugestão: Um infográfico cronológico simples mostrando a transição em fases da Apple de 2026 para 2027.
+                </div>
+                <img src="blob:https://gemini.google.com/991623d6-8905-47df-8201-57acbd4f7fd6" onerror="this.style.display='none';">
+            </div>
         </div>
         <div class="slide-footer">
             <span>A Aliança do Silício</span>
         </div>
     </div>
 
-    <!-- SLIDE 6 -->
     <div class="slide">
         <div class="slide-header">
-            <div class="slide-title">A Consolidação do Novo Ecossistema</div>
+            <div class="slide-title">Consolidação do Novo Ecossistema</div>
             <div class="slide-tag">Parcerias Âncora</div>
         </div>
-        <div class="slide-body">
-            <p>O plano do governo norte-americano foi desenhado para amarrar os três principais pilares da computação avançada global na infraestrutura da Intel:</p>
+        <div class="slide-body" style="flex-direction: column; justify-content: flex-start; align-items: stretch; gap: 20px;">
+            <p>O plano estratégico amarra os três grandes pilares da computação avançada global diretamente nas fábricas da Intel:</p>
             <table>
                 <thead>
                     <tr>
-                        <th>Parceiro Clave</th>
-                        <th>Papel no Ecossistema Intel</th>
+                        <th style="width: 25%;">Parceiro Chave</th>
+                        <th>Papel Estratégico no Ecossistema Intel</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>Apple</strong></td>
-                        <td>Garante o volume de escala comercial para dispositivos de consumo massivo.</td>
+                        <td>Garante o volume de escala comercial massivo para dispositivos eletrônicos de consumo.</td>
                     </tr>
                     <tr>
                         <td><strong>Nvidia</strong></td>
-                        <td>Aporte estratégico de $5 bilhões e diversificação de silício para GPUs de IA.</td>
+                        <td>Aporte de US$ 5 bilhões e diversificação de fornecimento para GPUs focadas em IA.</td>
                     </tr>
                     <tr>
                         <td><strong>Elon Musk (xAI/Tesla)</strong></td>
-                        <td>Garante a demanda de altíssimo desempenho para supercomputadores em solo doméstico.</td>
+                        <td>Garante a demanda e o processamento de alto desempenho em supercomputadores domésticos.</td>
                     </tr>
                 </tbody>
             </table>
+            <div class="slide-6-image-container">
+                <div style="position: absolute; z-index: 1;">
+                    🤝 <strong>[Espaço para Imagem Opcional]:</strong> Diagrama de rede interligando os logos de Apple, Nvidia e xAI/Tesla convergindo para a Intel.
+                </div>
+                <img src="blob:https://gemini.google.com/d823a485-cd63-423d-8cd2-33193996d34b" onerror="this.style.display='none';">
+            </div>
         </div>
         <div class="slide-footer">
             <span>A Aliança do Silício</span>
         </div>
     </div>
 
-    <!-- SLIDE 7 -->
     <div class="slide">
         <div class="slide-header">
-            <div class="slide-title">Conclusão: O Mito da Destruição da TSMC</div>
+            <div class="slide-title">Conclusão: O Rendimento (Yield)</div>
             <div class="slide-tag">Veredito e Futuro</div>
         </div>
         <div class="slide-body">
-            <p>O termo técnico crucial para avaliar essa disputa é o <strong>Yield (Taxa de Rendimento)</strong>:</p>
-            <ul>
-                <li><strong>O Diferencial de Taiwan:</strong> Conseguir imprimir os circuitos em laboratório é viável; o segredo da TSMC é conseguir produzir milhões de lâminas mantendo perdas quase nulas por lote.</li>
-                <li><strong>Redundância Geográfica Global:</strong> A TSMC não vai quebrar do dia para a noite. O resultado real desse movimento não é a destruição de Taiwan, mas sim a perda da sua exclusividade absoluta.</li>
-            </ul>
-            <div class="highlight-quote">
-                "Não estamos presenciando o fim de uma empresa, mas sim o nascimento de uma infraestrutura global descentralizada de silício."
+            <div class="content-column">
+                <p>O fator decisivo na disputa industrial não é apenas a litografia, mas sim a métrica de <strong>Yield (Taxa de Rendimento)</strong>:</p>
+                <ul>
+                    <li><strong>O Segredo da TSMC:</strong> O diferencial de Taiwan é fabricar em escala massiva de milhões de unidades mitigando falhas por lote.</li>
+                    <li><strong>Redundância Geográfica:</strong> A TSMC mantém sua relevância mundial, mas o mercado avança em direção a uma infraestrutura descentralizada e segura.</li>
+                </ul>
+                <div class="highlight-quote">
+                    "Não testemunhamos o fim de uma empresa, mas sim a criação de uma rede de silício global resiliente."
+                </div>
+            </div>
+            <div class="image-column">
+                <div class="image-placeholder-text">
+                    <i>🌐</i>
+                    <strong>[Espaço para Imagem/Gráfico]</strong><br>
+                    Sugestão: Ilustração de uma bolha ou rede interconectada de fábricas globais espalhadas pelos continentes.
+                </div>
+                <img src="blob:https://gemini.google.com/96757f34-ffcf-49d0-bf0d-4abbf8fc23e4" onerror="this.style.display='none';">
             </div>
         </div>
         <div class="slide-footer">
@@ -431,7 +541,6 @@
 </div>
 
 <script>
-    // Lógica do Mecanismo de Slides por JS
     const slides = document.querySelectorAll('.slide');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
@@ -464,7 +573,6 @@
         }
     });
 
-    // Controle por Teclado (Setas Direita/Esquerda e Espaço)
     window.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight' || e.key === ' ') {
             if (currentSlide < slides.length - 1) {
