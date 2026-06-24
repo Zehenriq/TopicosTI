@@ -119,7 +119,6 @@
             justify-content: center;
         }
 
-        /* Coluna de Imagem Limpa, sem bordas ou fundos artificiais */
         .image-column {
             flex: 1.2;
             height: 85%;
@@ -177,12 +176,12 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 10px 0 20px 0;
+            margin: 15px 0;
             font-size: 1.1rem;
         }
 
         th, td {
-            padding: 12px 16px;
+            padding: 14px 16px;
             text-align: left;
             border-bottom: 2px solid #1e293b;
         }
@@ -207,15 +206,15 @@
             padding-top: 15px;
         }
 
-        /* Estilo Exclusivo da Capa (Slide 1) */
-        .slide.cover {
+        /* Capa (Slide 1) e Encerramento (Slide 8) */
+        .slide.cover, .slide.end {
             justify-content: center;
             align-items: center;
             text-align: center;
             background: radial-gradient(circle at center, #1a233a 0%, #0a0d16 100%);
         }
 
-        .slide.cover h1 {
+        .slide.cover h1, .slide.end h1 {
             font-size: 4.2rem;
             font-weight: 900;
             line-height: 1.1;
@@ -225,7 +224,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .slide.cover h2 {
+        .slide.cover h2, .slide.end h2 {
             font-size: 2rem;
             color: var(--accent-cyan);
             font-weight: 500;
@@ -240,6 +239,26 @@
             padding: 12px 28px;
             border-radius: 40px;
             background-color: rgba(17, 22, 37, 0.6);
+        }
+
+        /* Estilização dos Integrantes no Slide 8 */
+        .team-container {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .team-member {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid #1e293b;
+            padding: 12px 30px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            letter-spacing: 0.05em;
         }
 
         /* Controles de Navegação */
@@ -294,29 +313,12 @@
             z-index: 10;
             pointer-events: none;
         }
-
-        /* Container do Slide 6 totalmente expandido e limpo */
-        .slide-6-image-area {
-            flex-grow: 1;
-            width: 100%;
-            height: 320px; /* Aumentado consideravelmente para preencher o espaço inferior */
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            overflow: hidden;
-            margin-top: 10px;
-        }
-        .slide-6-image-area img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
     </style>
 </head>
 <body>
 
 <div class="fullscreen-hint">Pressione <strong>F11</strong> para Tela Cheia | Use as setas ◄ ► do teclado</div>
-<div class="slide-indicator" id="indicator">Slide 1 de 7</div>
+<div class="slide-indicator" id="indicator">Slide 1 de 8</div>
 
 <div class="presentation-wrapper">
 
@@ -385,7 +387,7 @@
             <div class="content-column">
                 <p>Projetar arquiteturas complexas exige a capacidade física de imprimi-las no silício com alta eficiência comercial:</p>
                 <ul>
-                    <li><strong>Inovação Estrutural:</strong> O nó 18A-P introduces a tecnologia <em>PowerVia</em> (alimentação traseira) e transistores <em>RibbonFET</em>.</li>
+                    <li><strong>Inovação Estrutural:</strong> O nó 18A-P introduz a tecnologia <em>PowerVia</em> (alimentação traseira) e transistores <em>RibbonFET</em>.</li>
                     <li><strong>Demanda de Escala:</strong> Para viabilizar as novas mega-fábricas (Fabs), a Intel precisava atrair clientes âncora operando em massa.</li>
                 </ul>
             </div>
@@ -426,31 +428,33 @@
             <div class="slide-title">Consolidação do Novo Ecossistema</div>
             <div class="slide-tag">Parcerias Âncora</div>
         </div>
-        <div class="slide-body" style="flex-direction: column; justify-content: flex-start; align-items: stretch; gap: 0;">
-            <p>O plano estratégico amarra os três grandes pilares da computação avançada global diretamente nas fábricas da Intel:</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width: 25%;">Parceiro Chave</th>
-                        <th>Papel Estratégico no Ecossistema Intel</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Apple</strong></td>
-                        <td>Garante o volume de escala comercial massivo para dispositivos eletrônicos de consumo.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Nvidia</strong></td>
-                        <td>Aporte de US$ 5 bilhões e diversificação de fornecimento para GPUs focadas em IA.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Elon Musk (xAI/Tesla)</strong></td>
-                        <td>Garante a demanda e o processamento de alto desempenho em supercomputadores domésticos.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="slide-6-image-area">
+        <div class="slide-body">
+            <div class="content-column">
+                <p>O plano estratégico amarra os três grandes pilares da computação avançada global diretamente nas fábricas da Intel:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">Parceiro</th>
+                            <th>Papel Estratégico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Apple</strong></td>
+                            <td>Garante escala comercial massiva para eletrônicos de consumo.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nvidia</strong></td>
+                            <td>Aporte de US$ 5B e diversificação de linhas de GPUs para IA.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Elon Musk</strong></td>
+                            <td>Garante demanda de alto desempenho (xAI/Tesla).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="image-column">
                 <img src="img slide 6.png" alt="Diagrama de Convergência Tecnológica" onerror="this.style.display='none';">
             </div>
         </div>
@@ -481,6 +485,20 @@
         </div>
         <div class="slide-footer">
             <span>A Aliança do Silício</span>
+        </div>
+    </div>
+
+    <div class="slide end">
+        <h1>Muito Obrigado!</h1>
+        <h2>Perguntas ou Considerações?</h2>
+        <div class="meta" style="border: none; background: transparent; padding: 0; margin-bottom: 10px;">
+            Desenvolvido por:
+        </div>
+        <div class="team-container">
+            <div class="team-member">José</div>
+            <div class="team-member">Rafael</div>
+            <div class="team-member">Daniel</div>
+            <div class="team-member">Bryan</div>
         </div>
     </div>
 
