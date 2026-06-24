@@ -120,13 +120,13 @@
         }
 
         .image-column {
-            flex: 1;
-            height: 85%;
+            flex: 1.2; /* Dá um pouco mais de destaque horizontal para os infográficos */
+            height: 75%; /* Diminuído ligeiramente para dar mais respiro vertical */
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: rgba(15, 23, 42, 0.4);
-            border: 2px dashed #2d3748;
+            background-color: rgba(15, 23, 42, 0.2);
+            border: 1px solid #2d3748;
             border-radius: 16px;
             position: relative;
             overflow: hidden;
@@ -135,13 +135,13 @@
 
         .image-column:hover {
             border-color: var(--accent-cyan);
-            background-color: rgba(15, 23, 42, 0.7);
+            background-color: rgba(15, 23, 42, 0.4);
         }
 
         .image-column img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Mantém a proporção original perfeita sem cortar */
             display: block;
             z-index: 2;
         }
@@ -320,14 +320,15 @@
             pointer-events: none;
         }
 
+        /* Container do Slide 6 modificado para se adequar ao novo padrão normalizado */
         .slide-6-image-container {
-            height: 140px; 
-            border: 2px dashed #2d3748; 
+            height: 220px; 
+            border: 1px solid #2d3748; 
             border-radius: 12px; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            background-color: rgba(15, 23, 42, 0.4); 
+            background-color: rgba(15, 23, 42, 0.2); 
             color: var(--text-muted); 
             font-size: 1rem;
             position: relative;
@@ -336,12 +337,12 @@
         }
         .slide-6-image-container:hover {
             border-color: var(--accent-cyan);
-            background-color: rgba(15, 23, 42, 0.7);
+            background-color: rgba(15, 23, 42, 0.4);
         }
         .slide-6-image-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Mesma correção aplicada aqui */
             position: absolute;
             top: 0;
             left: 0;
@@ -467,7 +468,7 @@
             <div class="slide-title">Consolidação do Novo Ecossistema</div>
             <div class="slide-tag">Parcerias Âncora</div>
         </div>
-        <div class="slide-body" style="flex-direction: column; justify-content: flex-start; align-items: stretch; gap: 20px;">
+        <div class="slide-body" style="flex-direction: column; justify-content: flex-start; align-items: stretch; gap: 15px;">
             <p>O plano estratégico amarra os três grandes pilares da computação avançada global diretamente nas fábricas da Intel:</p>
             <table>
                 <thead>
@@ -510,7 +511,7 @@
         </div>
         <div class="slide-body">
             <div class="content-column">
-                <p>O factor decisivo na disputa industrial não é apenas a litografia, mas sim a métrica de <strong>Yield (Taxa de Rendimento)</strong>:</p>
+                <p>O fator decisivo na disputa industrial não é apenas a litografia, mas sim a métrica de <strong>Yield (Taxa de Rendimento)</strong>:</p>
                 <ul>
                     <li><strong>O Segredo da TSMC:</strong> O diferencial de Taiwan é fabricar em escala massiva de milhões de unidades mitigando falhas por lote.</li>
                     <li><strong>Redundância Geográfica:</strong> A TSMC mantém sua relevância mundial, mas o mercado avança em direção a uma infraestrutura descentralizada e segura.</li>
